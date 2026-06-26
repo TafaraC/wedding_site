@@ -1,0 +1,22 @@
+Wedding site
+Main page?
+Placeholder images for now on floating cards, scrolling reveals more 3 image sequence, 1 for each stage of life for te 2 parties, duo picture at the bottom
+Either reveal weddinf details as you scroll, or present them all at onceat the bottom
+Issue unique id codes for each guest 4 digits numbers and letters, after guest list provided
+More features?
+    On other pages:
+        Map(leaflet):
+            -> Highlight venue and nearby accomodation
+        rsvp form?
+            -> Attendance
+            -> Number of people in gorup
+            -> Names of people in group(namecards?)
+            -> Allergies/dietary requirements (checkboxes and free space for others)
+            -> Has accomodation?
+            -> Music requests?  
+        Admin page, different URL pulls important details and can export specific lists and data from the database into a readable form
+This is a low risk and low traffic project for about 120 people, so i think security can be slightly more lax, just dont allow readsor writes to the database unless admin, or form includes unique id code?
+
+
+
+    
