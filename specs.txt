@@ -16,7 +16,42 @@ More features?
             -> Music requests?  
         Admin page, different URL pulls important details and can export specific lists and data from the database into a readable form
 This is a low risk and low traffic project for about 120 people, so i think security can be slightly more lax, just dont allow readsor writes to the database unless admin, or form includes unique id code?
+Firestore schema:
+guests Collection
+Document ID: A7K2 (The unique 4-digit code)   
+groupName: "The Smith Family"allowedSeats: 2   
+hasRSVPd: true / false
+submittedData: (Object containing names, allergies, music requests, and accommodation status)   
 
-
-
+firestore security rules:
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
     
+    // Admin access: Allow everything if the user is authenticated as an admin
+    match /{document=**} {
+      allow read, write: if request.auth != null && request.auth.token.isAdmin == true;
+    }
+
+    // Guest access: Only allow reading/writing a specific document if you know its exact 4-digit ID
+    match /guests/{guestCode} {
+      // Guests can read their own data or update it to submit their RSVP
+      allow read, update: if true; 
+      
+      // Prevent guests from creating new codes or deleting existing ones
+      allow create, delete: if false; 
+    }
+  }
+}
+Directory structure:
+src/
+├── assets/          # Placeholder images, fonts, icons
+├── components/      # Reusable UI (FloatingCard, RSVPForm, MapComponent)
+├── firebase/        # Firebase configuration and database helper functions
+│   └── config.js
+├── pages/           # Distinct views (MainPage, AdminDashboard)
+│   ├── MainPage.jsx
+│   └── AdminPage.jsx
+├── App.jsx          # Root component handling routing/state
+├── index.css        # Global styles
+└── main.jsx         # Application entry point
