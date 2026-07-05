@@ -326,17 +326,144 @@ body {
 }
 .btn-submit:hover { background: #6C6D68; }
 
-/* Mobile adjustments */
+/* ==========================================================================
+   📱 MOBILE & TABLET RESPONSIVE OVERRIDES (Alternative Stacked Layout)
+   ========================================================================== */
+
 @media (max-width: 768px) {
-  .split-section, .split-section.reverse, .story-row, .story-row.reverse, .nav-links-section {
+  
+  /* --- 1. Global Spacing Adjustments --- */
+  body {
+    font-size: 0.95rem; /* Slightly smaller body font for compact viewports */
+  }
+
+  /* --- 2. Navigation Bar Overhaul --- */
+  .nav-container {
+    flex-direction: column; 
+    gap: 15px;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  .nav-links {
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+  /* --- 3. Hero Section Typography --- */
+  .hero-section {
+    padding: 60px 20px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.6rem; /* Keeps titles from clipping on narrow screens */
+    letter-spacing: 2px;
+  }
+
+  .hero-date-venue {
+    font-size: 1rem;
+  }
+
+  /* --- 4. Stacking the Editorial Split Blocks --- */
+  .split-section, 
+  .split-section.reverse {
+    flex-direction: column; /* Forces vertical stacking instead of side-by-side */
+    min-height: auto;
+  }
+
+  .split-image {
+    width: 100%;
+    height: 300px; /* Constrains placeholder image height on mobile */
+  }
+
+  .split-text {
+    width: 100%;
+    padding: 40px 24px; /* Increases readable space on small devices */
+    text-align: center;
+    align-items: center;
+  }
+
+  .split-text h2 {
+    font-size: 2rem;
+  }
+
+  /* --- 5. Full-Width Panoramic Images --- */
+  .full-width-image {
+    height: 350px; /* Reduces massive vertical desktop heights to frame nicely */
+  }
+
+  /* --- 6. Stacking Our Story Assets --- */
+  .story-section-title {
+    font-size: 2rem;
+    padding: 60px 20px 30px;
+  }
+
+  .story-row, 
+  .story-row.reverse,
+  .story-row.together {
+    flex-direction: column; /* Stacks image directly above text */
+    background: #F8F6F0;    /* Optional: blends panels back uniformly on mobile */
+  }
+
+  .story-img-edge {
+    width: 100%;
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .story-text-edge {
+    width: 100%;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .story-text-edge h3 {
+    font-size: 1.6rem;
+  }
+
+  /* --- 7. Three-Image Banner Footer Collapse --- */
+  .three-image-row {
+    flex-direction: column; 
+    height: auto;
+  }
+
+  .three-image-row > div {
+    height: 200px; /* Each photo block stacks neatly instead of squeezing sideways */
+    border-right: none;
+    border-bottom: 1px solid #F8F6F0; /* Clean separator line */
+  }
+
+  /* --- 8. Nav Link Block Alternative Footers --- */
+  .nav-links-section {
     flex-direction: column;
   }
-  .split-image, .story-img-edge { min-height: 300px; width: 100%; }
-  .split-text, .story-text-edge, .nav-link-block { width: 100%; padding: 40px 20px; }
-  .three-image-row { flex-direction: column; height: auto; }
-  .three-image-row > div { height: 250px; border-right: none; border-bottom: 1px solid #F8F6F0; }
-  .hero-section h1 { font-size: 2.5rem; }
-  .nav-container { flex-direction: column; gap: 15px; }
+
+  .nav-link-block {
+    width: 100%;
+    padding: 50px 24px;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* --- 9. Form Configuration Panel Optimization --- */
+  .form-container-panel {
+    padding: 40px 20px;
+    border-left: none;  /* Remove borders if it goes full-screen edge-to-edge */
+    border-right: none;
+  }
+
+  .dynamic-input-row {
+    gap: 6px;
+  }
+
+  .btn-remove {
+    width: 44px; /* Clean thumb-friendly target spacing */
+  }
 }
 
 /* --- Contact Details Section --- */
@@ -397,4 +524,21 @@ body {
     flex-direction: column;
     gap: 40px;
   }
+}
+/* src/index.css */
+
+body {
+  /* Use your new clean body text font here */
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  background-color: #F8F6F0;
+  color: #3B3C38;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  /* Use your elegant serif font for all titles */
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; 
+  color: #3B3C38;
 }

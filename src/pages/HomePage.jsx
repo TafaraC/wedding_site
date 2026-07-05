@@ -10,9 +10,9 @@ export default function HomePage() {
       
       {/* 1. Flat, Edge-to-Edge Hero */}
       <section className="hero-section">
-        <h1>Placeholder name</h1>
+        <h1>Chiedza & Fred</h1>
         <div className="hero-date-venue">
-          ?? April 2027 • Red Ivory
+          24 April 2027 • Red Ivory
         </div>
       </section>
 
