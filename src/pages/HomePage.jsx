@@ -7,7 +7,7 @@ import banner from '../assets/img1.jpg';
 import IMG2 from '../assets/img2.jpg';
 import img4 from '../assets/img4.jpg';
 import img5 from '../assets/img5.jpg';
-import img6 from '../assets/fred.jpg';
+import img6 from '../assets/fred.jpg';  
 
 export default function HomePage() {
   return (
