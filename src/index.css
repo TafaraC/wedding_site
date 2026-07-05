@@ -1,27 +1,38 @@
-/* --- Global Reset & Base Theme Settings --- */
+/* ==========================================================================
+   📦 BASE THEME & RESET (Mobile-First Baseline)
+   ========================================================================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #F8F6F0; /* Soft off-white backdrop */
-  color: #3B3C38; /* Soft charcoal text */
-  line-height: 1.6;
-}
 html, body {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden; /* Prevents side-scrolling across the entire site */
+  overflow-x: hidden;
+  background-color: #F8F6F0; /* Soft off-white backdrop */
+  color: #3B3C38; /* Soft charcoal text */
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400; 
+  color: #3B3C38;
 }
 
 .main-wedding-site {
   width: 100%;
   max-width: 100%;
-  overflow: hidden; /* Keeps every inner section bounded */
+  overflow: hidden;
 }
+
+/* ==========================================================================
+   📱 MOBILE LAYOUT COMPONENT STYLES (Default View)
+   ========================================================================== */
 
 /* --- Navigation Bar --- */
 .navbar {
@@ -34,9 +45,11 @@ html, body {
 
 .nav-container {
   width: 100%;
-  padding: 15px 40px;
+  padding: 15px 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; 
+  gap: 15px;
+  text-align: center;
   align-items: center;
 }
 
@@ -52,14 +65,17 @@ html, body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
 }
 
 .nav-links a {
   color: #6C6D68;
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.2s ease;
@@ -70,66 +86,67 @@ html, body {
 }
 
 .nav-rsvp-btn {
-  background: #E8D3D1; /* Pastel dusty rose */
+  background: #E8D3D1;
   padding: 10px 20px;
   color: #3B3C38 !important;
-}
-
-.nav-rsvp-btn:hover {
-  background: #D8C3C1;
-}
-
-/* --- Edge-to-Edge Main Container --- */
-.main-wedding-site {
-  width: 100%;
-  /* No max-width, no padding here to allow edge-to-edge layouts */
 }
 
 /* --- Hero Section --- */
 .hero-section {
   text-align: center;
-  padding: 100px 20px;
+  padding: 60px 20px;
   background-color: #EAECE8; /* Pastel sage off-white */
   border-bottom: 1px solid #E2DFD8;
 }
 
 .hero-section h1 {
-  font-size: 4rem;
+  font-size: 2.4rem;
   text-transform: uppercase;
   font-weight: 300;
-  letter-spacing: 4px;
-  margin-bottom: 20px;
-  color: #3B3C38;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
 }
 
 .hero-date-venue {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #6C6D68;
 }
 
-/* --- Editorial Image Layouts --- */
-.split-section {
-  display: flex;
+/* --- 🌟 Top Full-Width Image (Responsive Aspect Scaling) --- */
+.full-width-image {
   width: 100%;
-  min-height: 500px;
-}
-
-.split-section.reverse {
-  flex-direction: row-reverse;
-}
-
-.split-image {
-  flex: 1;
-  background: #DCE0D9; /* Pastel placeholder */
+  max-width: 100%;
+  aspect-ratio: 1 / 1; /* Forces a perfect clean square layout layout on vertical mobile screens */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #8C9188;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  position: relative;
+  background-color: #D3DBDE;
+}
+
+.full-width-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Crucial: Anchors image rendering to the top, so scaling into wider viewports naturally crops the bottom out */
+  object-position: center top; 
+}
+
+/* --- Dynamic Split Layout Blocks --- */
+.split-section {
+  display: flex;
+  flex-direction: column; /* Stacked layout default */
+  width: 100%;
+}
+
+.split-image {
+  width: 100%;
+  height: 380px;
+  background: #DCE0D9;
+  overflow: hidden;
 }
 
 .split-image img {
@@ -139,39 +156,81 @@ html, body {
 }
 
 .split-text {
-  flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 60px;
+  align-items: center;
+  text-align: center;
+  padding: 45px 24px;
   background: #F8F6F0;
 }
 
 .split-text h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-.full-width-image {
+/* --- Our Story Segments --- */
+.story-section {
   width: 100%;
-  height: 600px;
-  background: #D3DBDE; /* Pastel slate blue placeholder */
+}
+
+.story-section-title {
+  text-align: center;
+  padding: 60px 20px 30px;
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: #F8F6F0;
+}
+
+.story-row {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Stacked layout default */
+  width: 100%;
+}
+
+.story-row { background: #F4EBE6; }
+.story-row.reverse { background: #E8D3D1; }
+.story-row.together { background: #EAECE8; }
+
+.story-img-edge {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.story-text-edge {
+  width: 100%;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  color: #79858B;
-  font-size: 1.2rem;
+  text-align: center;
+}
+
+.story-text-edge h3 {
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
+/* --- 🌟 Three-Image Row (Preserved Responsive Row) --- */
 .three-image-row {
   display: flex;
+  flex-direction: row; /* Maintained across all platforms */
   width: 100%;
-  height: 450px;
+  height: 32vw; /* Dynamically resizes fluidly using proportional viewport measurements */
+  min-height: 140px; 
+  max-height: 450px;
 }
 
 .three-image-row > div {
@@ -181,6 +240,7 @@ html, body {
   justify-content: center;
   border-right: 1px solid #F8F6F0;
   color: #8C9188;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -189,75 +249,25 @@ html, body {
   border-right: none;
 }
 
-/* --- Our Story Edge-to-Edge --- */
-.story-section {
-  width: 100%;
-}
-
-.story-section-title {
-  text-align: center;
-  padding: 80px 20px 40px;
-  font-size: 2.5rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  background: #F8F6F0;
-}
-
-.story-row {
-  display: flex;
-  width: 100%;
-  background: #F4EBE6; /* Pastel peach */
-}
-
-.story-row.reverse {
-  flex-direction: row-reverse;
-  background: #E8D3D1; /* Pastel rose */
-}
-
-.story-row.together {
-  background: #EAECE8; /* Pastel sage */
-}
-
-.story-img-edge {
-  width: 50%;
-  object-fit: cover;
-  min-height: 450px;
-}
-
-.story-text-edge {
-  width: 50%;
-  padding: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.story-text-edge h3 {
-  font-size: 2rem;
-  font-weight: 300;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* --- Directional Nav Blocks --- */
+/* --- Alternative Directional Nav Links --- */
 .nav-links-section {
   display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
 .nav-link-block {
-  flex: 1;
-  padding: 80px 60px;
+  width: 100%;
+  padding: 50px 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .nav-link-block h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 300;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -265,8 +275,8 @@ html, body {
 }
 
 .nav-link-block p {
-  margin-bottom: 30px;
-  font-size: 1.1rem;
+  margin-bottom: 25px;
+  font-size: 1rem;
 }
 
 .bg-sage { background: #DCE0D9; }
@@ -280,297 +290,178 @@ html, body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
+  font-size: 0.85rem;
 }
 
-.action-link:hover {
-  background: #6C6D68;
-}
-
-/* --- Forms & General Pages (RSVP & Map) --- */
-.page-content-wrapper {
-  padding: 60px 40px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.map-placeholder {
-  height: 500px;
-  background: #D3DBDE;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #E2DFD8;
-  color: #79858B;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.form-group { margin-bottom: 25px; }
-.form-group label { display: block; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-
-/* Flat corners for all inputs */
-.form-control, .code-input { 
-  width: 100%; 
-  padding: 15px; 
-  border: 1px solid #C4C4C4; 
-  border-radius: 0; /* Flat corners */
-  font-size: 1rem; 
-  background: #fff;
-}
-.form-control:focus { outline: none; border-color: #3B3C38; }
-
-.btn-submit { 
-  display: block; 
-  width: 100%; 
-  padding: 18px; 
-  background: #3B3C38; 
-  color: #F8F6F0; 
-  border: none; 
-  border-radius: 0; /* Flat corners */
-  font-size: 1rem; 
-  font-weight: 500; 
-  cursor: pointer; 
-  text-transform: uppercase; 
-  letter-spacing: 2px; 
-}
-.btn-submit:hover { background: #6C6D68; }
-
-/* ==========================================================================
-   📱 MOBILE & TABLET RESPONSIVE OVERRIDES (Alternative Stacked Layout)
-   ========================================================================== */
-
-@media (max-width: 768px) {
-  
-  /* --- 1. Global Spacing Adjustments --- */
-  body {
-    font-size: 0.95rem; /* Slightly smaller body font for compact viewports */
-  }
-
-  /* --- 2. Navigation Bar Overhaul --- */
-  .nav-container {
-    flex-direction: column; 
-    gap: 15px;
-    padding: 15px 20px;
-    text-align: center;
-  }
-
-  .nav-links {
-    gap: 20px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .nav-links a {
-    font-size: 0.85rem;
-  }
-
-  /* --- 3. Hero Section Typography --- */
-  .hero-section {
-    padding: 60px 20px;
-  }
-
-  .hero-section h1 {
-    font-size: 2.6rem; /* Keeps titles from clipping on narrow screens */
-    letter-spacing: 2px;
-  }
-
-  .hero-date-venue {
-    font-size: 1rem;
-  }
-
-  /* --- 4. Stacking the Editorial Split Blocks --- */
-  .split-section, 
-  .split-section.reverse {
-    flex-direction: column; /* Forces vertical stacking instead of side-by-side */
-    min-height: auto;
-  }
-
-  .split-image {
-    width: 100%;
-    height: 300px; /* Constrains placeholder image height on mobile */
-  }
-
-  .split-text {
-    width: 100%;
-    padding: 40px 24px; /* Increases readable space on small devices */
-    text-align: center;
-    align-items: center;
-  }
-
-  .split-text h2 {
-    font-size: 2rem;
-  }
-
-  /* --- Strict Full-Width Bounded Image --- */
-.full-width-image {
-  width: 100%;
-  max-width: 100%; /* Prevents stretching past browser limits */
-  height: 600px;
-  overflow: hidden; /* CRITICAL: Clips anything attempting to spill out */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.full-width-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Crops rather than deforming or spilling out */
-  object-position: center;
-}
-
-/* Mobile Constraint */
-@media (max-width: 768px) {
-  .full-width-image {
-    height: 350px;
-  }
-}
-
-  /* --- 6. Stacking Our Story Assets --- */
-  .story-section-title {
-    font-size: 2rem;
-    padding: 60px 20px 30px;
-  }
-
-  .story-row, 
-  .story-row.reverse,
-  .story-row.together {
-    flex-direction: column; /* Stacks image directly above text */
-    background: #F8F6F0;    /* Optional: blends panels back uniformly on mobile */
-  }
-
-  .story-img-edge {
-    width: 100%;
-    min-height: 320px;
-    height: 320px;
-  }
-
-  .story-text-edge {
-    width: 100%;
-    padding: 40px 24px;
-    text-align: center;
-  }
-
-  .story-text-edge h3 {
-    font-size: 1.6rem;
-  }
-
-  /* --- 7. Three-Image Banner Footer Collapse --- */
-  .three-image-row {
-    flex-direction: column; 
-    height: auto;
-  }
-
-  .three-image-row > div {
-    height: 200px; /* Each photo block stacks neatly instead of squeezing sideways */
-    border-right: none;
-    border-bottom: 1px solid #F8F6F0; /* Clean separator line */
-  }
-
-  /* --- 8. Nav Link Block Alternative Footers --- */
-  .nav-links-section {
-    flex-direction: column;
-  }
-
-  .nav-link-block {
-    width: 100%;
-    padding: 50px 24px;
-    align-items: center;
-    text-align: center;
-  }
-
-  /* --- 9. Form Configuration Panel Optimization --- */
-  .form-container-panel {
-    padding: 40px 20px;
-    border-left: none;  /* Remove borders if it goes full-screen edge-to-edge */
-    border-right: none;
-  }
-
-  .dynamic-input-row {
-    gap: 6px;
-  }
-
-  .btn-remove {
-    width: 44px; /* Clean thumb-friendly target spacing */
-  }
-}
-
-/* --- Contact Details Section --- */
+/* --- Contact Details --- */
 .contact-section {
   text-align: center;
-  padding: 100px 20px;
-  background-color: #F8F6F0; /* Off-white pastel backdrop */
+  padding: 60px 24px;
+  background-color: #F8F6F0;
   border-top: 1px solid #E2DFD8;
 }
 
 .contact-section h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 300;
   margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: #3B3C38;
 }
 
 .contact-subtitle {
   color: #6C6D68;
-  font-size: 1.1rem;
-  margin-bottom: 50px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1rem;
+  margin-bottom: 40px;
 }
 
 .contact-grid {
   display: flex;
-  justify-content: center;
-  gap: 80px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 35px;
 }
 
 .contact-block {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .contact-block h4 {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #3B3C38;
 }
 
 .contact-block p {
   color: #6C6D68;
-  font-size: 1rem;
 }
 
-/* Mobile adjustments for the contact grid */
-@media (max-width: 768px) {
+/* ==========================================================================
+   💻 DESKTOP PROGRESSIVE ENHANCEMENT (Screens 769px and Up)
+   ========================================================================== */
+@media (min-width: 769px) {
+
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 40px;
+  }
+
+  .nav-links {
+    width: auto;
+    gap: 30px;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+  }
+
+  .hero-section {
+    padding: 100px 20px;
+  }
+
+  .hero-section h1 {
+    font-size: 4rem;
+    letter-spacing: 4px;
+  }
+
+  .hero-date-venue {
+    font-size: 1.2rem;
+  }
+
+  /* --- 🌟 Desktop Adaptive Wide Transformation --- */
+  .full-width-image {
+    aspect-ratio: auto;
+    height: 50vh; /* Limits landscape screen visibility allocation to a max of 50% vertical viewport real estate */
+    max-height: 500px;
+  }
+
+  /* --- Row Flex Adjustments for Side-by-Side Spreads --- */
+  .split-section {
+    flex-direction: row;
+    min-height: 500px;
+  }
+
+  .split-section.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .split-image {
+    flex: 1;
+    height: auto;
+  }
+
+  .split-text {
+    flex: 1;
+    padding: 60px;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .split-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .story-section-title {
+    font-size: 2.5rem;
+    padding: 80px 20px 40px;
+  }
+
+  .story-row,
+  .story-row.reverse {
+    flex-direction: row;
+  }
+
+  .story-row.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .story-img-edge {
+    width: 50%;
+    min-height: 450px;
+    height: auto;
+  }
+
+  .story-text-edge {
+    width: 50%;
+    padding: 60px;
+    text-align: left;
+  }
+
+  .story-text-edge h3 {
+    font-size: 2rem;
+  }
+
+  .nav-links-section {
+    flex-direction: row;
+  }
+
+  .nav-link-block {
+    flex: 1;
+    padding: 80px 60px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .contact-section {
+    padding: 100px 20px;
+  }
+
+  .contact-section h2 {
+    font-size: 2.5rem;
+  }
+
   .contact-grid {
-    flex-direction: column;
-    gap: 40px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 80px;
   }
 }
-/* src/index.css */
-
-body {
-  /* Use your new clean body text font here */
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  background-color: #F8F6F0;
-  color: #3B3C38;
-  line-height: 1.6;
-}
-
-h1, h2, h3, h4 {
-  /* Use your elegant serif font for all titles */
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400; 
-  color: #3B3C38;
+/* Ensures the gallery images fill their individual column blocks cleanly */
+.three-image-row > div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crops the sides seamlessly as the window shrinks or expands */
+  display: block;
 }
