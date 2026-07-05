@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import firstImg from '../assets/first.jpg';
 import secondImg from '../assets/second.jpg';
 import finIMG from '../assets/third.jpg';
+import IMG1 from '../assets/img1.jpg'
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
       
       {/* 1. Flat, Edge-to-Edge Hero */}
       <section className="hero-section">
-        <h1>Chiedza & Fred</h1>
+        <h1>Welcome to Chiedza & Fred's wedding </h1>
         <div className="hero-date-venue">
           24 April 2027 • Red Ivory
         </div>
@@ -29,7 +30,7 @@ export default function HomePage() {
 
       {/* 3. Full Width Break (Image 2) */}
       <section className="full-width-image">
-        [ Placeholder ]
+        <img src={IMG1} alt="Wide"/>
       </section>
 
       {/* 4. Editorial Split Block Reversed (Image 3) */}

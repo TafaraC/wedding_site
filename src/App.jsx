@@ -12,7 +12,7 @@ function App() {
       {/* 🌴 Global Tropical Navigation Bar */}
       <nav className="navbar">
         <div className="nav-container">
-          <Link to="/" className="nav-logo">Very professional wedding site</Link>
+          <Link to="/" className="nav-logo">Chiedza & Fred</Link>
           <div className="nav-links">
             <Link to="/">Home</Link>
             <Link to="/directions">Directions</Link>

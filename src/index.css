@@ -11,6 +11,17 @@ body {
   color: #3B3C38; /* Soft charcoal text */
   line-height: 1.6;
 }
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevents side-scrolling across the entire site */
+}
+
+.main-wedding-site {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* Keeps every inner section bounded */
+}
 
 /* --- Navigation Bar --- */
 .navbar {
@@ -392,10 +403,31 @@ body {
     font-size: 2rem;
   }
 
-  /* --- 5. Full-Width Panoramic Images --- */
+  /* --- Strict Full-Width Bounded Image --- */
+.full-width-image {
+  width: 100%;
+  max-width: 100%; /* Prevents stretching past browser limits */
+  height: 600px;
+  overflow: hidden; /* CRITICAL: Clips anything attempting to spill out */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.full-width-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crops rather than deforming or spilling out */
+  object-position: center;
+}
+
+/* Mobile Constraint */
+@media (max-width: 768px) {
   .full-width-image {
-    height: 350px; /* Reduces massive vertical desktop heights to frame nicely */
+    height: 350px;
   }
+}
 
   /* --- 6. Stacking Our Story Assets --- */
   .story-section-title {
