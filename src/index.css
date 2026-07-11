@@ -470,3 +470,437 @@ h1, h2, h3, h4 {
     gap: 80px;
   }
 }
+/* ==========================================================================
+   🔳 MONOCHROME RSVP FORM ENGINE & UTILITIES
+   ========================================================================== */
+.page-content-wrapper {
+  padding: 40px 20px;
+  max-width: 650px; /* narrowed for sleek, high-end editorial proportioning */
+  margin: 0 auto;
+  background-color: #FFFFFF; /* Pure White backdrop */
+}
+
+.form-container-panel {
+  width: 100%;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.rsvp-main-title {
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.rsvp-subtitle {
+  color: #666666;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.form-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 45px 0 20px 0;
+  padding-bottom: 8px;
+  color: #000000;
+  border-bottom: 1px solid #000000; /* Crisp structural monochrome separator line */
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  color: #000000;
+}
+
+/* Minimalist Editorial Input Fields */
+.form-control, .code-input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #CCCCCC;
+  border-radius: 0 !important; /* Forces strict flat corners */
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  background: #FFFFFF;
+  color: #000000;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus, .code-input:focus {
+  outline: none;
+  border-color: #000000; /* Becomes stark black on interaction */
+}
+
+.code-input {
+  letter-spacing: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.form-help-text {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+.legacy-margin-top {
+  margin-top: 15px;
+}
+
+/* Dynamic Input Rows for Multiple Guests */
+.dynamic-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.btn-remove {
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  color: #000000;
+  width: 53px;
+  height: 53px; /* Square proportions match input element heights perfectly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 0;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-remove:hover:not(:disabled) {
+  border-color: #000000;
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.btn-remove:disabled {
+  color: #CCCCCC;
+  border-color: #EEEEEE;
+  cursor: not-allowed;
+}
+
+.btn-add {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  color: #000000;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-top: 5px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn-add:hover {
+  opacity: 0.7;
+}
+
+/* Custom Editorial Styling for Select Option Lists */
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrapper::after {
+  content: '↓';
+  font-size: 0.8rem;
+  color: #000000;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.select-control {
+  appearance: none; /* Strip native platform arrow vectors */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* High-Fashion Grid Layout for Checkbox Matrices */
+.inline-checkboxes {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on smallest devices */
+  gap: 15px;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  text-transform: none !important; /* Retains clean reading format */
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0px !important;
+  color: #000000 !important;
+  margin-bottom: 0 !important;
+}
+
+.checkbox-label input[type="checkbox"] {
+  accent-color: #000000; /* Enforces stark solid black focus checkboxes on modern browsers */
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Stark Solid Black Submit Button Actions */
+.form-submit-container {
+  margin-top: 50px;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background: #000000; /* True Black block asset */
+  color: #FFFFFF; /* High contrast White ink */
+  border: none;
+  border-radius: 0 !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: #000000;
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   📱 PROGRESSIVE RESPONSIVE FORMS ENHANCEMENT
+   ========================================================================== */
+@media (min-width: 480px) {
+  .inline-checkboxes {
+    grid-template-columns: 1fr 1fr; /* Neatly splits into two columns as screen expands */
+  }
+}
+
+@media (min-width: 769px) {
+  .page-content-wrapper {
+    padding: 80px 40px; /* Spacious margins on luxury monitor panels */
+  }
+  
+  .rsvp-main-title {
+    font-size: 4rem;
+  }
+}
+
+/* ==========================================================================
+   🗺️ MONOCHROME DIRECTIONS & ACCOMMODATIONS STYLES
+   ========================================================================== */
+.directions-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.directions-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.directions-subtitle {
+  color: #666666;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.section-heading-bw {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000000;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 8px;
+}
+
+.section-helper-text {
+  color: #666666;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+/* Map Container Frame */
+.map-section-panel {
+  margin-bottom: 60px;
+}
+
+.leaflet-map-wrapper {
+  width: 100%;
+  height: 450px; /* Tall, readable map footprint on mobile */
+  border: 1px solid #000000; /* Sharp monochrome containment border */
+  background: #EEEEEE;
+  overflow: hidden;
+}
+
+.custom-leaflet-map {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Map Popup Formatting */
+.popup-content {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.popup-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: #000000;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Accommodations Grid */
+.accommodations-section {
+  margin-bottom: 60px;
+}
+
+.accom-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Stacked vertically on mobile baseline */
+  gap: 25px;
+}
+
+.accom-card {
+  border: 1px solid #CCCCCC;
+  padding: 30px 24px;
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s ease;
+}
+
+.accom-card:hover {
+  border-color: #000000; /* Snaps to sharp black on hover */
+}
+
+.accom-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  color: #000000;
+}
+
+.accom-card p {
+  color: #555555;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.btn-outline-black-full {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  background: transparent;
+  border: 1px solid #000000;
+  color: #000000 !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-black-full:hover {
+  background: #000000;
+  color: #FFFFFF !important;
+}
+
+/* Travel Details Block */
+.travel-details-section {
+  margin-bottom: 40px;
+}
+
+.travel-info-box {
+  border: 1px solid #CCCCCC;
+  padding: 30px;
+  background: #FFFFFF;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333333;
+}
+
+.travel-info-box strong {
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+/* ==========================================================================
+   💻 DESKTOP PROGRESSIVE ENHANCEMENT (Screens 769px and Up)
+   ========================================================================== */
+@media (min-width: 769px) {
+  .directions-title {
+    font-size: 4rem;
+  }
+
+  .leaflet-map-wrapper {
+    height: 550px; /* Expanse map view on large monitors */
+  }
+
+  .accom-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 side-by-side cards on desktop */
+  }
+}

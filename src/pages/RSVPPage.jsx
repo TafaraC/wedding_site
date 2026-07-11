@@ -57,7 +57,6 @@ export default function RSVPPage() {
       }
     }
 
-    // Clean up the payload
     const finalPayload = {
       attendance: formData.attendance,
       groupSize: formData.guestNames.filter(name => name.trim() !== '').length,
@@ -66,33 +65,27 @@ export default function RSVPPage() {
       otherDietary: formData.otherDietary,
       hasAccommodation: formData.hasAccommodation,
       musicRequests: formData.musicRequests,
-      hasResponded: true, // Flag to easily see who has replied in your admin dashboard
+      hasResponded: true, 
       respondedAt: new Date().toISOString()
     };
 
     try {
-      // Point directly to the document matching their 4-digit code
       const guestDocRef = doc(db, 'guests', formData.guestCode.toUpperCase());
-      
-      // Update that specific document
       await updateDoc(guestDocRef, finalPayload);
-      
       alert(`🎉 Thank you! Your RSVP has been successfully received.`);
-      
-      // Optional: Clear the form or redirect to the home page here
-      
     } catch (error) {
       console.error("Error updating RSVP:", error);
       alert("❌ We couldn't find that guest code, or there was a network error. Please check your 4-digit code and try again.");
     }
   };
+
   return (
     <div className="main-wedding-site page-content-wrapper">
-      
       <div className="form-container-panel">
-        <header style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 300, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px' }}>RSVP</h1>
-          <p style={{ color: '#6C6D68' }}>Kindly respond by entering your unique code</p>
+        
+        <header className="form-header">
+          <h1 className="rsvp-main-title">RSVP</h1>
+          <p className="rsvp-subtitle">Kindly respond by entering your unique code</p>
         </header>
 
         <form onSubmit={handleSubmit} className="conventional-form">
@@ -108,20 +101,22 @@ export default function RSVPPage() {
               className="form-control code-input"
               value={formData.guestCode}
               onChange={(e) => setFormData(prev => ({ ...prev, guestCode: e.target.value.toUpperCase() }))}
-              placeholder="e.g. A1B2"
+              placeholder="E.G. A1B2"
               required
             />
-            <small>Found on your physical or digital invitation.</small>
+            <small className="form-help-text">Found on your physical or digital invitation.</small>
           </div>
 
           {/* Section 2: Attendance */}
           <h2 className="form-section-title">Attendance</h2>
           <div className="form-group">
             <label htmlFor="attendance">Will you be celebrating with us?</label>
-            <select id="attendance" name="attendance" className="form-control" value={formData.attendance} onChange={handleChange}>
-              <option value="yes">Joyfully Accept</option>
-              <option value="no">Regretfully Decline</option>
-            </select>
+            <div className="select-wrapper">
+              <select id="attendance" name="attendance" className="form-control select-control" value={formData.attendance} onChange={handleChange}>
+                <option value="yes">Joyfully Accept</option>
+                <option value="no">Regretfully Decline</option>
+              </select>
+            </div>
           </div>
 
           {/* Section 3: Guest Details & Preferences (Only show if attending) */}
@@ -139,7 +134,7 @@ export default function RSVPPage() {
                       placeholder={`Guest ${index + 1} Full Name`}
                       value={name}
                       onChange={(e) => handleNameChange(index, e.target.value)}
-                      required={index === 0} // Only the first field is strictly required by HTML
+                      required={index === 0}
                     />
                     <button 
                       type="button" 
@@ -162,20 +157,34 @@ export default function RSVPPage() {
               <div className="form-group">
                 <label>Allergies & Dietary Requirements</label>
                 <div className="inline-checkboxes">
-                  <label className="checkbox-label"><input type="checkbox" name="vegetarian" checked={formData.dietary.vegetarian} onChange={handleCheckboxChange} /> Vegetarian</label>
-                  <label className="checkbox-label"><input type="checkbox" name="vegan" checked={formData.dietary.vegan} onChange={handleCheckboxChange} /> Vegan</label>
-                  <label className="checkbox-label"><input type="checkbox" name="glutenFree" checked={formData.dietary.glutenFree} onChange={handleCheckboxChange} /> Gluten-Free</label>
-                  <label className="checkbox-label"><input type="checkbox" name="nutAllergy" checked={formData.dietary.nutAllergy} onChange={handleCheckboxChange} /> Nut Allergy</label>
+                  <label className="checkbox-label">
+                    <input type="checkbox" name="vegetarian" checked={formData.dietary.vegetarian} onChange={handleCheckboxChange} /> 
+                    <span>Vegetarian</span>
+                  </label>
+                  <label className="checkbox-label">
+                    <input type="checkbox" name="vegan" checked={formData.dietary.vegan} onChange={handleCheckboxChange} /> 
+                    <span>Vegan</span>
+                  </label>
+                  <label className="checkbox-label">
+                    <input type="checkbox" name="glutenFree" checked={formData.dietary.glutenFree} onChange={handleCheckboxChange} /> 
+                    <span>Gluten-Free</span>
+                  </label>
+                  <label className="checkbox-label">
+                    <input type="checkbox" name="nutAllergy" checked={formData.dietary.nutAllergy} onChange={handleCheckboxChange} /> 
+                    <span>Nut Allergy</span>
+                  </label>
                 </div>
-                <input type="text" name="otherDietary" className="form-control" style={{ marginTop: '15px' }} placeholder="Other requirements or specific details..." value={formData.otherDietary} onChange={handleChange} />
+                <input type="text" name="otherDietary" className="form-control legacy-margin-top" placeholder="Other requirements or specific details..." value={formData.otherDietary} onChange={handleChange} />
               </div>
 
               <div className="form-group">
                 <label htmlFor="hasAccommodation">Accommodation Status</label>
-                <select id="hasAccommodation" name="hasAccommodation" className="form-control" value={formData.hasAccommodation} onChange={handleChange}>
-                  <option value="no">No, still looking / staying elsewhere</option>
-                  <option value="yes">Yes, secured nearby</option>
-                </select>
+                <div className="select-wrapper">
+                  <select id="hasAccommodation" name="hasAccommodation" className="form-control select-control" value={formData.hasAccommodation} onChange={handleChange}>
+                    <option value="no">No, still looking / staying elsewhere</option>
+                    <option value="yes">Yes, secured nearby</option>
+                  </select>
+                </div>
               </div>
 
               <div className="form-group">
@@ -185,7 +194,7 @@ export default function RSVPPage() {
             </>
           )}
 
-          <div style={{ marginTop: '40px' }}>
+          <div className="form-submit-container">
             <button type="submit" className="btn-submit">Submit Response</button>
           </div>
 
