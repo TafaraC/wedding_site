@@ -41,7 +41,7 @@ export default function HomePage() {
         </div>
         
         <div className="story-landscape-img-container">
-          <img src={finIMG} alt="Our Story Together" className="story-floating-img" />
+          <img src={img4} alt="Our Story Together" className="story-floating-img" />
         </div>
       </section>
 
@@ -83,15 +83,15 @@ export default function HomePage() {
         <div className="contact-grid">
           <div className="contact-block">
             <h4>Groom</h4>
-            <p>+27 12 345 6789</p>
+            <p>+27 71 962 1315</p>
           </div>
           <div className="contact-block">
             <h4>Bride</h4>
-            <p>+27 98 765 4321</p>
+            <p>+27 72 151 9531 </p>
           </div>
           <div className="contact-block">
             <h4>Email</h4>
-            <p>hello@ourwedding.com</p>
+            <p>chiedzachibanda5@gmail.com</p>
           </div>
         </div>
       </section>
