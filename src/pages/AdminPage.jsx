@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export default function AdminPage() {
   const handleExportData = () => {
@@ -30,7 +30,7 @@ export default function AdminPage() {
       </div>
 
       <h2>Guest Management Overview</h2>
-      <table className="admin-table">
+      <div className="admin-table-wrapper" role="region" aria-label="Guest list" tabIndex={0}><table className="admin-table">
         <thead>
           <tr>
             <th>Code</th>
@@ -49,7 +49,7 @@ export default function AdminPage() {
             <td>-</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   );
 }
