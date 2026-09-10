@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
@@ -6,6 +6,8 @@ export default function RSVPPage() {
   const [formData, setFormData] = useState({
     guestCode: '',
     attendance: 'yes',
+    preWeddingDinner: '',
+    preWeddingDinnerGuests: 1,
     guestNames: [''], // Starts with one empty name block by default
     dietary: { vegetarian: false, vegan: false, glutenFree: false, nutAllergy: false },
     otherDietary: '',
@@ -57,7 +59,16 @@ export default function RSVPPage() {
       }
     }
 
+    const dinnerGuests = Number(formData.preWeddingDinnerGuests);
+    if (!['yes', 'no'].includes(formData.preWeddingDinner) ||
+        (formData.preWeddingDinner === 'yes' && (!Number.isInteger(dinnerGuests) || dinnerGuests < 1))) {
+      alert('Please select your dinner attendance and provide a valid guest count if attending.');
+      return;
+    }
+
     const finalPayload = {
+      preWeddingDinner: formData.preWeddingDinner,
+      preWeddingDinnerGuests: formData.preWeddingDinner === 'yes' ? dinnerGuests : 0,
       attendance: formData.attendance,
       groupSize: formData.guestNames.filter(name => name.trim() !== '').length,
       guestNames: formData.guestNames.filter(name => name.trim() !== ''),
@@ -131,7 +142,7 @@ export default function RSVPPage() {
                     <input 
                       type="text" 
                       className="form-control"
-                      placeholder={`Guest ${index + 1} Full Name`}
+                      placeholder={`Guest ${index + 1} Full Name`} aria-label={`Guest ${index + 1} Full Name`}
                       value={name}
                       onChange={(e) => handleNameChange(index, e.target.value)}
                       required={index === 0}
@@ -141,7 +152,7 @@ export default function RSVPPage() {
                       className="btn-remove"
                       onClick={() => handleRemoveName(index)}
                       disabled={formData.guestNames.length === 1}
-                      title="Remove Guest"
+                      title="Remove Guest" aria-label={`Remove Guest ${index + 1}`}
                     >
                       ✕
                     </button>
@@ -194,6 +205,24 @@ export default function RSVPPage() {
             </>
           )}
 
+          <h2 className="form-section-title">Pre-Wedding Dinner</h2>
+          <div className="form-group">
+            <p id="dinner-help" className="section-helper-text">Optional dinner at Red Ivory on 23 April 2027, the night before the wedding. R300 per person.</p>
+            <label htmlFor="preWeddingDinner">Will you join us for the pre-wedding dinner?</label>
+            <select id="preWeddingDinner" name="preWeddingDinner" className="form-control select-control"
+              value={formData.preWeddingDinner} onChange={handleChange} aria-describedby="dinner-help" required>
+              <option value="" disabled>Please select</option>
+              <option value="yes">Yes, we’d love to join</option>
+              <option value="no">No, thank you</option>
+            </select>
+          </div>
+          {formData.preWeddingDinner === 'yes' && (
+            <div className="form-group">
+              <label htmlFor="preWeddingDinnerGuests">Number of guests joining the dinner</label>
+              <input id="preWeddingDinnerGuests" name="preWeddingDinnerGuests" type="number" min="1" step="1"
+                className="form-control" value={formData.preWeddingDinnerGuests} onChange={handleChange} required />
+            </div>
+          )}
           <div className="form-submit-container">
             <button type="submit" className="btn-submit">Submit Response</button>
           </div>

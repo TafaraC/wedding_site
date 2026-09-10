@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -51,7 +51,7 @@ const locations = {
 
 export default function DirectionsPage() {
   return (
-    <div className="main-wedding-site page-content-wrapper">
+    <div className="main-wedding-site page-content-wrapper directions-page">
       
       {/* 1. Monochrome Page Header */}
       <header className="directions-header">
